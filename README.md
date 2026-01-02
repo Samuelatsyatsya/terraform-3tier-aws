@@ -113,21 +113,29 @@ terraform output
 ```
 # Screenshots
 
-##### ALB – DNS name, listeners, target groups.
+##### ALB
+![alt text](screenshots/load_balancers.png)
 
 ##### ICMP / Connectivity – Successful ICMP (ping) response from the ALB target
 ![alt text](screenshots/ping.png)
 
-##### C2 / ASG – Auto Scaling group and running instances.
+##### EC2 / ASG – Auto Scaling group and running instances.
+![alt text](screenshots/ec2_asg.png)
 
 ##### RDS 
+![alt text](screenshots/rds.png)
 
-##### VPC / Subnets – VPC CIDR, public/private/database subnets, route tables.
+##### VPC, Subnets 
+![alt text](screenshots/subnets.png)
+
+![alt text](screenshots/vpc.png)
 
 ##### Terraform Apply Output – Confirmation of resource creation.
 
 ![alt text](screenshots/plan.png)
+
 ![alt text](screenshots/apply.png)
+
 ![alt text](screenshots/output.png)
 
 ### Notes
