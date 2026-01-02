@@ -110,15 +110,21 @@ $availability_zone  = trim(imds("placement/availability-zone"));
 $instance_type      = trim(imds("instance-type"));
 $private_ip         = trim(imds("local-ipv4"));
 
+// MASK sensitive metadata for public display
+$instance_id_masked = substr($instance_id_full, 0, 6) . 'xxxx';
+$private_ip_masked  = preg_replace('/\d+$/', 'xxx', $private_ip_full);
+
 try {
     $dsn = sprintf("mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4", $db_host, $db_port, $db_name);
     $pdo = new PDO($dsn, $db_user, $db_pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
     $pdo->exec("CREATE TABLE IF NOT EXISTS visitors (id INT AUTO_INCREMENT PRIMARY KEY, visit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, instance_id VARCHAR(50), ip_address VARCHAR(50))");
 
+// Insert current visit
     $stmt = $pdo->prepare("INSERT INTO visitors (instance_id, ip_address) VALUES (?, ?)");
     $stmt->execute([$instance_id, $_SERVER['REMOTE_ADDR']]);
 
+// Fetch stats
     $total_visits = $pdo->query("SELECT COUNT(*) FROM visitors")->fetchColumn();
     $recent = $pdo->query("SELECT visit_time, instance_id, ip_address FROM visitors ORDER BY visit_time DESC LIMIT 10");
 
@@ -162,7 +168,7 @@ try {
     <div class="info-grid">
         <div class="info-card">
             <h3>Instance ID</h3>
-            <p><?php echo htmlspecialchars($instance_id ?: 'Unknown'); ?></p>
+            <p><?php echo htmlspecialchars($instance_id_masked); ?></p>
         </div>
         <div class="info-card">
             <h3>Availability Zone</h3>
@@ -174,7 +180,7 @@ try {
         </div>
         <div class="info-card">
             <h3>Private IP</h3>
-            <p><?php echo htmlspecialchars($private_ip ?: 'Unknown'); ?></p>
+            <p><?php echo htmlspecialchars($private_ip_masked); ?></p>
         </div>
     </div>
 
