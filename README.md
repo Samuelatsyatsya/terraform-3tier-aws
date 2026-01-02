@@ -29,7 +29,7 @@ This project deploys a **3-tier application architecture** on AWS using Terrafor
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/Samuelatsyatsya/terraform-3tier-aws.git>
 cd terraform-3tier-aws
 ```
 2. Create a terraform.tfvars file with your variables:
