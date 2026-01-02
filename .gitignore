@@ -1,23 +1,46 @@
-# Local Terraform files
+# Terraform runtime files
 *.tfstate
-*.pem
 *.tfstate.*
 .terraform/
+.terraform.lock.hcl
 
 # Crash logs
 crash.log
 
-# Override files
+
+# Terraform override / CLI config
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
-
-# CLI configuration files
 .terraformrc
-
 terraform.rc
 
-# Sensitive files (optional, if you use variables for secrets)
+
+# Sensitive variable files
 *.tfvars
 *.tfvars.json
+
+
+# Private keys / certificates
+*.pem
+*.key
+
+
+# OS / Editor files
+.DS_Store
+
+# Linux
+*.swp
+*~
+
+# VSCode
+.vscode/
+
+
+# Packages / Scripts
+# Debian packages
+*.deb
+
+# Logs
+*.log
