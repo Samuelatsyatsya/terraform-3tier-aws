@@ -89,26 +89,28 @@ Verify resources in the AWS Console.
 ### Variables and Outputs
 
 #### Key Variables
-Variable	Description	Example Value
-vpc_cidr	CIDR block for the VPC	10.0.0.0/16
-public_subnet_cidrs	Public subnet CIDRs	["10.0.1.0/24","10.0.2.0/24"]
-private_subnet_cidrs	Private subnet CIDRs	["10.0.3.0/24","10.0.4.0/24"]
-instance_type	EC2 instance type	t3.medium
-key_name	SSH key for EC2 access	my-keypair
-min_size / max_size	Auto Scaling group min/max	1 / 3
-alb_enable_deletion_protection	Protect ALB from accidental deletion	false
+| Variable                         | Description                          | Example Value                   |
+| -------------------------------- | ------------------------------------ | ------------------------------- |
+| `vpc_cidr`                       | CIDR block for the VPC               | `10.0.0.0/16`                   |
+| `public_subnet_cidrs`            | Public subnet CIDRs                  | `["10.0.1.0/24","10.0.2.0/24"]` |
+| `private_subnet_cidrs`           | Private subnet CIDRs                 | `["10.0.3.0/24","10.0.4.0/24"]` |
+| `instance_type`                  | EC2 instance type                    | `t3.medium`                     |
+| `key_name`                       | SSH key for EC2 access               | `my-keypair`                    |
+| `min_size` / `max_size`          | Auto Scaling group min/max           | `1 / 3`                         |
+| `alb_enable_deletion_protection` | Protect ALB from accidental deletion | `false`                         |
+
 
 #### Outputs
-Output	Description
-alb_dns_name	DNS of the ALB
-rds_endpoint	RDS instance endpoint
-public_ec2_ips	List of public EC2 instance IPs
-private_ec2_ips	List of private EC2 instance IPs
+| Output            | Description                      |
+| ----------------- | -------------------------------- |
+| `alb_dns_name`    | DNS of the ALB                   |
+| `rds_endpoint`    | RDS instance endpoint            |
+| `public_ec2_ips`  | List of public EC2 instance IPs  |
+| `private_ec2_ips` | List of private EC2 instance IPs |
 
-Example Terraform outputs:
-
+```bash
 terraform output
-
+```
 # Screenshots
 
 ALB – DNS name, listeners, target groups.
