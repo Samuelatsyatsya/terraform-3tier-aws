@@ -1,10 +1,7 @@
 # variables.tf
 # Variable definitions for 3-tier architecture Terraform configuration
 
-# ===================================================================
 # BASIC PROJECT VARIABLES
-# ===================================================================
-
 variable "project_name" {
   description = "Name of the project (used for resource naming and tagging)"
   type        = string
@@ -25,10 +22,9 @@ variable "aws_region" {
   type        = string
 }
 
-# ===================================================================
-# NETWORKING VARIABLES
-# ===================================================================
 
+
+# NETWORKING VARIABLES
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   type        = string
@@ -79,10 +75,9 @@ variable "enable_dns_support" {
   type        = bool
 }
 
-# ===================================================================
-# SECURITY VARIABLES
-# ===================================================================
 
+
+# SECURITY VARIABLES
 variable "web_app_port" {
   description = "Port for the application (used by ALB and security groups)"
   type        = number
@@ -103,10 +98,9 @@ variable "ssh_cidr_blocks" {
   type        = list(string)
 }
 
-# ===================================================================
-# LOAD BALANCER VARIABLES
-# ===================================================================
 
+
+# LOAD BALANCER VARIABLES
 variable "alb_internal" {
   description = "Whether the ALB should be internal (private) or internet-facing"
   type        = bool
@@ -142,10 +136,9 @@ variable "certificate_arn" {
   type        = string
 }
 
-# ===================================================================
-# DATABASE VARIABLES
-# ===================================================================
 
+
+# DATABASE VARIABLES
 variable "db_engine" {
   description = "Database engine (e.g., mysql, postgres)"
   type        = string
@@ -222,10 +215,9 @@ variable "db_deletion_protection" {
   type        = bool
 }
 
-# ===================================================================
-# COMPUTE VARIABLES
-# ===================================================================
 
+
+# COMPUTE VARIABLES
 variable "instance_type" {
   description = "EC2 instance type for the application servers"
   type        = string
@@ -236,10 +228,8 @@ variable "key_name" {
   type        = string
 }
 
-# ===================================================================
-# AUTO SCALING VARIABLES
-# ===================================================================
 
+# AUTO SCALING VARIABLES
 variable "asg_min_size" {
   description = "Minimum number of instances in the Auto Scaling Group"
   type        = number
@@ -280,10 +270,7 @@ variable "cpu_low_threshold" {
   type        = number
 }
 
-# ===================================================================
 # COMPATIBILITY VARIABLES (for backward compatibility)
-# ===================================================================
-
 variable "min_size" {
   description = "Alias for asg_min_size (for backward compatibility)"
   type        = number
