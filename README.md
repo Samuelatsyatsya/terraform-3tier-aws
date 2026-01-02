@@ -125,9 +125,9 @@ VPC / Subnets – VPC CIDR, public/private/database subnets, route tables.
 
 Terraform Apply Output – Confirmation of resource creation.
 
-![alt text](plan.png)
-![alt text](apply.png)
-![alt text](output.png)
+![alt text](screenshots/plan.png)
+![alt text](screenshots/apply.png)
+![alt text](screenshots/output.png)
 ### Notes
 
 Ensure security groups allow ICMP and SSH for testing connectivity.
