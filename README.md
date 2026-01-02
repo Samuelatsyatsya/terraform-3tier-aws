@@ -113,21 +113,23 @@ terraform output
 ```
 # Screenshots
 
-ALB – DNS name, listeners, target groups.
+##### ALB – DNS name, listeners, target groups.
 
-ICMP / Connectivity – Ping from bastion host to private EC2 instance or curl ALB.
+##### ICMP / Connectivity – Successful ICMP (ping) response from the ALB target
+![alt text](screenshots/ping.png)
 
-EC2 / ASG – Auto Scaling group and running instances.
+##### C2 / ASG – Auto Scaling group and running instances.
 
-RDS – Database endpoint, engine, Multi-AZ, storage.
+##### RDS 
 
-VPC / Subnets – VPC CIDR, public/private/database subnets, route tables.
+##### VPC / Subnets – VPC CIDR, public/private/database subnets, route tables.
 
-Terraform Apply Output – Confirmation of resource creation.
+##### Terraform Apply Output – Confirmation of resource creation.
 
 ![alt text](screenshots/plan.png)
 ![alt text](screenshots/apply.png)
 ![alt text](screenshots/output.png)
+
 ### Notes
 
 Ensure security groups allow ICMP and SSH for testing connectivity.
