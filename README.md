@@ -29,7 +29,7 @@ This project deploys a **3-tier application architecture** on AWS using Terrafor
 1. Clone the repository:
 
 ```bash
-git clone <https://github.com/Samuelatsyatsya/terraform-3tier-aws.git>
+git clone https://github.com/Samuelatsyatsya/terraform-3tier-aws.git
 cd terraform-3tier-aws
 ```
 2. Create a terraform.tfvars file with your variables:
@@ -125,7 +125,9 @@ VPC / Subnets – VPC CIDR, public/private/database subnets, route tables.
 
 Terraform Apply Output – Confirmation of resource creation.
 
-
+![alt text](plan.png)
+![alt text](apply.png)
+![alt text](output.png)
 ### Notes
 
 Ensure security groups allow ICMP and SSH for testing connectivity.
