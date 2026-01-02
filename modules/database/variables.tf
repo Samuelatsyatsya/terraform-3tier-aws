@@ -15,56 +15,48 @@ variable "security_group_id" {
   type        = string
 }
 
-variable "engine" {
+variable "db_engine" {
   description = "Database engine type"
   type        = string
-  default     = "mysql"
   validation {
-    condition     = contains(["mysql", "postgres"], var.engine)
+    condition     = contains(["mysql", "postgres"], var.db_engine)
     error_message = "Engine must be either 'mysql' or 'postgres'."
   }
 }
 
-variable "engine_version" {
+variable "db_engine_version" {
   description = "Database engine version"
   type        = string
-  default     = "8.0"
 }
 
 variable "parameter_group_family" {
   description = "Database parameter group family"
   type        = string
-  default     = "mysql8.0"
 }
 
-variable "instance_class" {
+variable "db_instance_class" {
   description = "RDS instance class"
   type        = string
-  default     = "db.t3.micro"
 }
 
 variable "allocated_storage" {
   description = "Allocated storage in GB"
   type        = number
-  default     = 20
 }
 
 variable "max_allocated_storage" {
   description = "Maximum allocated storage for autoscaling in GB"
   type        = number
-  default     = 100
 }
 
 variable "storage_type" {
   description = "Storage type (gp2, gp3, io1, io2)"
   type        = string
-  default     = "gp3"
 }
 
 variable "storage_encrypted" {
   description = "Enable storage encryption"
   type        = bool
-  default     = true
 }
 
 variable "iops" {
@@ -92,7 +84,6 @@ variable "password" {
 variable "port" {
   description = "Port on which database accepts connections"
   type        = number
-  default     = 3306
 }
 
 variable "multi_az" {
@@ -110,7 +101,6 @@ variable "publicly_accessible" {
 variable "backup_retention_period" {
   description = "Number of days to retain backups"
   type        = number
-  default     = 7
 }
 
 variable "backup_window" {

@@ -39,9 +39,9 @@ resource "aws_db_parameter_group" "main" {
 # RDS Instance
 resource "aws_db_instance" "main" {
   identifier     = "${var.project_name}-db"
-  engine         = var.engine
-  engine_version = var.engine_version
-  instance_class = var.instance_class
+  engine         = var.db_engine
+  engine_version = var.db_engine_version
+  instance_class = var.db_instance_class
 
   allocated_storage     = var.allocated_storage
   max_allocated_storage = var.max_allocated_storage
@@ -94,4 +94,39 @@ resource "aws_db_instance" "main" {
       password
     ]
   }
+}
+
+
+
+# SSM Parameters (DB details)
+resource "aws_ssm_parameter" "db_endpoint" {
+  name  = "/app/db/endpoint"
+  type  = "String"
+  value = aws_db_instance.main.endpoint
+
+  tags = var.tags
+}
+
+resource "aws_ssm_parameter" "db_name" {
+  name  = "/app/db/name"
+  type  = "String"
+  value = var.db_name
+
+  tags = var.tags
+}
+
+resource "aws_ssm_parameter" "db_username" {
+  name  = "/app/db/username"
+  type  = "String"
+  value = var.username
+
+  tags = var.tags
+}
+
+resource "aws_ssm_parameter" "db_password" {
+  name  = "/app/db/password"
+  type  = "SecureString"
+  value = var.password
+
+  tags = var.tags
 }
