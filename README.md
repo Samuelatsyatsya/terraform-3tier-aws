@@ -76,16 +76,19 @@ terraform apply -var-file="terraform.tfvars"
 Verify resources in the AWS Console.
 
 ### Module Descriptions
-Module	Purpose
-vpc	Creates VPC, public/private/database subnets, Internet Gateway, NAT Gateway, route tables
-alb	Creates Application Load Balancer, listeners, target groups
-ec2_asg	Deploys Auto Scaling Group of EC2 instances with security groups
-rds	Deploys RDS instance with storage, engine type, multi-AZ (optional)
-outputs	Exposes ALB DNS, RDS endpoint, EC2 public/private IPs
+
+| Module       | Purpose                                                                                                                                                      |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `networking` | Creates the VPC, public/private/database subnets, route tables, Internet Gateway, and NAT Gateway. Sets up the network backbone for the 3-tier architecture. |
+| `security`   | Defines security groups, network ACLs, and any firewall rules for EC2, ALB, and RDS to control inbound/outbound traffic.                                     |
+| `alb`        | Deploys the Application Load Balancer (ALB), listeners (HTTP/HTTPS), and target groups for routing traffic to the application servers.                       |
+| `compute`    | Deploys EC2 instances inside an Auto Scaling Group (ASG) in the private or public subnets, with scaling policies and associated security groups.             |
+| `database`   | Deploys an RDS instance in private subnets, sets database engine, storage, backups, and optional Multi-AZ configuration for high availability.               |
+
 
 ### Variables and Outputs
 
-# Key Variables
+#### Key Variables
 Variable	Description	Example Value
 vpc_cidr	CIDR block for the VPC	10.0.0.0/16
 public_subnet_cidrs	Public subnet CIDRs	["10.0.1.0/24","10.0.2.0/24"]
@@ -95,7 +98,7 @@ key_name	SSH key for EC2 access	my-keypair
 min_size / max_size	Auto Scaling group min/max	1 / 3
 alb_enable_deletion_protection	Protect ALB from accidental deletion	false
 
-# Outputs
+#### Outputs
 Output	Description
 alb_dns_name	DNS of the ALB
 rds_endpoint	RDS instance endpoint
@@ -120,7 +123,6 @@ VPC / Subnets – VPC CIDR, public/private/database subnets, route tables.
 
 Terraform Apply Output – Confirmation of resource creation.
 
-⚡ Tip: Number screenshots to match sections above.
 
 ### Notes
 
@@ -132,3 +134,9 @@ Always destroy resources after testing to avoid AWS charges:
 ```bash
 terraform destroy -var-file="terraform.tfvars"
 ```
+
+
+
+<p align="center">
+  Made with ❤️ by Samuel
+</p>
