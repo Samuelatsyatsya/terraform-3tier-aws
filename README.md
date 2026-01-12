@@ -13,7 +13,7 @@ This project deploys a **3-tier application architecture** on AWS using Terrafor
 
 **Architecture Diagram:**
 
-
+![alt text](<screenshots/3 Tier Architecture Diagram.png>)
 ---
 
 ## Deployment Instructions
